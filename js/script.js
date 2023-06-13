@@ -297,4 +297,8 @@ document.addEventListener('DOMContentLoaded', () => {
             closeModal();
         }, 4000);
     }
+
+    fetch('http://localhost:3000/menuco')
+        .then(data => data.json())
+        .then(res => console.log(res));
 });
