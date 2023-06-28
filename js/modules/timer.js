@@ -1,21 +1,11 @@
-function timer() {
-
-    const deadLine = '2023-06-10';
+function timer(id, deadline) {
 
     function getTimeRemaining(endtime) {
-        const t = Date.parse(endtime) - Date.parse(new Date());
-
-        if (t <= 0) {
-            days = 0;
-            hours = 0;
-            minutes = 0;
-            seconds = 0;
-        } else {
-              days = Math.floor(t / (1000 * 60 * 60 * 24)),
-              hours = Math.floor((t / (1000 * 60 * 60)) % 24),
-              minutes = Math.floor((t / (1000 * 60)) % 60),
-              seconds = Math.floor((t / 1000) % 60);
-        }
+        const t = Date.parse(endtime) - Date.parse(new Date()),
+            days = Math.floor(t / (1000 * 60 * 60 * 24)),
+            hours = Math.floor((t / (1000 * 60 * 60)) % 24),
+            minutes = Math.floor((t / (1000 * 60)) % 60),
+            seconds = Math.floor((t / 1000) % 60);
 
         return {
             'total': t,
@@ -35,6 +25,7 @@ function timer() {
     }
 
     function setClock(selector, endtime) {
+
         const timer = document.querySelector(selector),
               days = timer.querySelector('#days'),
               hours = timer.querySelector('#hours'),
@@ -57,7 +48,8 @@ function timer() {
             }
         }
     }
-    setClock('.timer', deadLine);
+
+    setClock(id, deadline);
 }
 
-module.exports = timer;
+export default timer;
